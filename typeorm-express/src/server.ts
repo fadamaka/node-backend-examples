@@ -1,11 +1,9 @@
 import * as express from "express";
-import { userController } from "./controller/UserController";
+import userRouter from "./router/UserRouter";
 
 const app = express();
 app.use(express.json());
 
-userController(app);
-
-// start express server
+app.use("/users", userRouter);
 
 export default app;
