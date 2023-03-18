@@ -6,7 +6,7 @@ import {
     JoinColumn,
 } from "typeorm";
 import { Reservation } from "./Reservation";
-import { IsNotEmpty } from "class-validator";
+import { IsEmail, IsNotEmpty } from "class-validator";
 
 @Entity()
 export class User {
@@ -15,15 +15,16 @@ export class User {
 
     @Column()
     @IsNotEmpty()
-    firstName: string;
+    name: string;
 
     @Column()
     @IsNotEmpty()
-    lastName: string;
+    @IsEmail()
+    email: string;
 
     @Column()
     @IsNotEmpty()
-    age: number;
+    password: string;
 
     @OneToMany(() => Reservation, (reservation) => reservation.user)
     @JoinColumn()

@@ -10,7 +10,7 @@ export const getAll = async (req: Request, res: Response) => {
 
 export const getOne = async (req: Request, res: Response) => {
     const results = await AppDataSource.getRepository(User).findOneBy({
-        id: req.params.id,
+        id: parseInt(req.params.id),
     });
     return res.send(results);
 };
@@ -28,7 +28,7 @@ export const saveOne = async (req: Request, res: Response) => {
 
 export const updateOne = async (req: Request, res: Response) => {
     const user = await AppDataSource.getRepository(User).findOneBy({
-        id: req.params.id,
+        id: parseInt(req.params.id),
     });
     AppDataSource.getRepository(User).merge(user, req.body);
     const results = await AppDataSource.getRepository(User).save(user);
