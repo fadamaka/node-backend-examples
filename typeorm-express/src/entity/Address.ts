@@ -1,10 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, Column } from "typeorm";
+import { BaseEntity } from "./BaseEntity";
 
 @Entity()
-export class Address {
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class Address extends BaseEntity {
     @Column()
     country: string;
 

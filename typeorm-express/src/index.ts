@@ -1,3 +1,4 @@
+import "dotenv/config.js";
 import { AppDataSource } from "./data-source";
 import { User } from "./entity/User";
 import app from "./server";

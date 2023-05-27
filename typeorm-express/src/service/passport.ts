@@ -3,7 +3,7 @@ import { Strategy, ExtractJwt } from "passport-jwt";
 import { AppDataSource } from "../data-source";
 import { User } from "../entity/User";
 
-const SECRET_KEY = "secret";
+const SECRET_KEY = process.env.SECRET_KEY;
 
 const options = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),

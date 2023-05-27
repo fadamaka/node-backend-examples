@@ -4,8 +4,8 @@ import * as jwt from "jsonwebtoken";
 import { User } from "../entity/User";
 import { AppDataSource } from "../data-source";
 
-const SALT_ROUND = Number(10);
-const SECRET_KEY = "secret";
+const SALT_ROUND = parseInt(process.env.SALT_ROUND);
+const SECRET_KEY = process.env.SECRET_KEY;
 
 export const register = async (req: Request, res: Response) => {
     const { name, email, password } = req.body;

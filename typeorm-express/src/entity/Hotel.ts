@@ -1,27 +1,18 @@
-import {
-    Entity,
-    PrimaryGeneratedColumn,
-    Column,
-    OneToOne,
-    JoinColumn,
-    OneToMany,
-} from "typeorm";
+import { Entity, Column, OneToOne, JoinColumn, OneToMany } from "typeorm";
 import { Address } from "./Address";
+import { BaseEntity } from "./BaseEntity";
 import { Room } from "./Room";
 
 @Entity()
-export class Hotel {
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class Hotel extends BaseEntity {
     @Column()
     name: string;
 
-    @OneToMany(() => Room, (room) => room.hotel)
+    @OneToMany(() => Room, (room) => room.hotel, { eager: true })
     @JoinColumn()
     rooms: Room[];
 
-    @OneToOne(() => Address)
+    @OneToOne(() => Address, { eager: true })
     @JoinColumn()
     address: Address;
 }

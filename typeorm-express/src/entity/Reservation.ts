@@ -1,12 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne } from "typeorm";
+import { BaseEntity } from "./BaseEntity";
 import { Room } from "./Room";
 import { User } from "./User";
 
 @Entity()
-export class Reservation {
-    @PrimaryGeneratedColumn()
-    id: number;
-
+export class Reservation extends BaseEntity {
     @ManyToOne(() => Room, (room) => room.reservations)
     room: Room;
 
