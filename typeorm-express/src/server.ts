@@ -1,9 +1,9 @@
 import * as express from "express";
 import authRouter from "./router/AuthRouter";
+import reservationRouter from "./router/ReservationRouter";
 import "./service/passport";
 import { initRouter } from "./router/CrudRouter";
 import { User } from "./entity/User";
-import { Reservation } from "./entity/Reservation";
 import { Hotel } from "./entity/Hotel";
 import { Room } from "./entity/Room";
 import { Address } from "./entity/Address";
@@ -13,7 +13,7 @@ app.use(express.json());
 
 app.use("/users", initRouter(User, "saveOne"));
 
-app.use("/reservations", initRouter(Reservation, "saveOne"));
+app.use("/reservations", reservationRouter);
 
 app.use("/addresses", initRouter(Address));
 
