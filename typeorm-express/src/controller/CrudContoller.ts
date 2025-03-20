@@ -23,7 +23,10 @@ export class CrudController<T> {
     };
 
     saveOne = async (req: Request, res: Response) => {
-        const entityBody = Object.assign(this.type.prototype, req.body);
+        const entityBody = Object.assign(
+            new (this.type as new () => BaseEntity)(),
+            req.body
+        );
         const errors = await validate(entityBody);
         if (errors.length > 0) {
             res.status(400);

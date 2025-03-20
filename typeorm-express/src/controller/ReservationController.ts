@@ -3,7 +3,7 @@ import { Reservation } from "../entity/Reservation";
 import { validateAndInsert } from "../service/ReservationService";
 
 export const saveOne = async (req: Request, res: Response) => {
-    const reservationBody = Object.assign(Reservation.prototype, req.body);
+    const reservationBody = Object.assign(new Reservation(), req.body);
     let errors = [];
     const newReservation = await validateAndInsert(reservationBody, errors);
     if (errors.length > 0) {
